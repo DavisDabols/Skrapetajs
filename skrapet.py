@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup as bs
 
 URL = 'https://www.delfi.lv/archive/latest.php'
 LAPAS = 'lapas/'
+skaitliic = 0
 
 def saglabat(url, datne):
     rezultats = requests.get(url)
@@ -15,7 +16,6 @@ def saglabat(url, datne):
 
 def lejupieladet_lapas():
     saglabat(f"{URL}", f"lapa.html")
-    time.sleep(1)
 
 def info(datne):
     with open(datne, 'r', encoding='UTF-8') as f:
@@ -39,6 +39,11 @@ def info(datne):
 
 def CustomPrint(raksts):
     if raksts != {}:
-        print(raksts["virsraksts"] + "      ->" + raksts["saite"])
+        print(raksts["virsraksts"] + "      ->" + raksts["saite"])    
 
-info('lapas/lapa.html')
+while(True):    
+    skaitliic += 1
+    lejupieladet_lapas()
+    info('lapas/lapa.html')
+    print(f"-DONE-{skaitliic}-")
+    time.sleep(5)
