@@ -38,8 +38,7 @@ def info(datne):
         CustomPrint(raksts)
 
 def CustomPrint(raksts):
-    for r in raksts:
-        if r != {}:
-            print(raksts["virsraksts"] + "      ->" + raksts["saite"])
+    if raksts != {}:
+        print(raksts["virsraksts"] + "      ->" + raksts["saite"])
 
 info('lapas/lapa.html')
