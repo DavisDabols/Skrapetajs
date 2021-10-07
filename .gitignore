@@ -129,4 +129,5 @@ dmypy.json
 .pyre/
 
 #super stiliiga custom gitignore dalja
-/lapas
+lapas/
+save.txt
