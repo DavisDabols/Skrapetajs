@@ -35,15 +35,27 @@ def info(datne):
         if elementu_teksts.text.strip().__contains__("Covid"):
             raksts["saite"] = elementu_teksts["href"]
             raksts["virsraksts"] = elementu_teksts.text.strip()
+
+            eksiste = False
+
+            with open(f"save.txt", 'r', encoding='UTF-8') as read:
+                for line in read:                    
+                    if line.__contains__(raksts["saite"]):
+                        eksiste = True
+                if eksiste == False:
+                    with open(f"save.txt", 'a', encoding='UTF-8') as append:
+                        append.write(raksts["saite"] + " + " + raksts["virsraksts"] + "\n")
+
         CustomPrint(raksts)
 
 def CustomPrint(raksts):
     if raksts != {}:
-        print(raksts["virsraksts"] + "      ->" + raksts["saite"])    
+        print(raksts["virsraksts"] + "      ->" + raksts["saite"])
 
 while(True):    
     skaitliic += 1
     lejupieladet_lapas()
     info('lapas/lapa.html')
     print(f"-DONE-{skaitliic}-")
-    time.sleep(5)
+    time.sleep(30)
+    
