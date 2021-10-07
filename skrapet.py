@@ -32,11 +32,14 @@ def info(datne):
 
         elementu_teksts = elements.find("a", class_="text-mine-shaft")
 
-        raksts["saite"] = elementu_teksts["href"]
-        raksts["virsraksts"] = elementu_teksts.text.strip()
+        if elementu_teksts.text.strip().__contains__("Covid"):
+            raksts["saite"] = elementu_teksts["href"]
+            raksts["virsraksts"] = elementu_teksts.text.strip()
+        CustomPrint(raksts)
 
-        print(raksts)
-
-
+def CustomPrint(raksts):
+    for r in raksts:
+        if r != {}:
+            print(raksts["virsraksts"] + "      ->" + raksts["saite"])
 
 info('lapas/lapa.html')
